@@ -10,6 +10,10 @@ filtered_data = []
 categories = []
 
 # Filter out outliers and categorize remaining data
+def print(param):
+    pass
+
+
 for value in data:
     # Check for outliers
     if value > outlier_threshold:
