@@ -1,0 +1,88 @@
+### Documentation in Python Functions
+
+**Docstrings** are a way to document Python functions, classes, and modules. They provide a convenient way to include information about the purpose, parameters, and return values of a function. This documentation is enclosed within triple quotes (`"""..."""`) and is placed immediately after the function definition.
+
+#### Example:
+
+Here’s an example demonstrating how to use docstrings to document a Python function:
+
+```python
+def calculate_mean(numbers):
+    """
+    Calculate the mean of a list of numbers.
+
+    :param numbers: List of numbers.
+    :return: Mean of the numbers.
+    """
+    return sum(numbers) / len(numbers)
+```
+
+#### Breakdown:
+
+1. **Function Definition:**
+   ```python
+   def calculate_mean(numbers):
+   ```
+   - **Purpose:** Defines a function named `calculate_mean` that calculates the mean of a list of numbers.
+   - **Parameter:**
+     - `numbers`: The input to the function, expected to be a list of numbers.
+
+2. **Docstring:**
+   ```python
+   """
+   Calculate the mean of a list of numbers.
+
+   :param numbers: List of numbers.
+   :return: Mean of the numbers.
+   """
+   ```
+   - **Purpose of the Docstring:**
+     - Provides a description of what the function does.
+     - Documents the parameters and return value, making the function easier to understand and use.
+
+   - **Description:**
+     ```python
+     Calculate the mean of a list of numbers.
+     ```
+     - Briefly describes what the function does.
+
+   - **Parameter Documentation:**
+     ```python
+     :param numbers: List of numbers.
+     ```
+     - `:param numbers:` Indicates that the `numbers` parameter is a list of numbers.
+
+   - **Return Documentation:**
+     ```python
+     :return: Mean of the numbers.
+     ```
+     - `:return:` Describes what the function returns, which in this case is the mean of the numbers.
+
+3. **Function Body:**
+   ```python
+   return sum(numbers) / len(numbers)
+   ```
+   - **Purpose:** Computes the mean by summing all the numbers in the list and dividing by the count of numbers.
+
+#### Usage Example:
+
+```python
+numbers = [10, 20, 30, 40, 50]
+mean = calculate_mean(numbers)
+print("Mean:", mean)
+```
+
+- **Explanation:**
+  - Creates a list `numbers` with some values.
+  - Calls the `calculate_mean` function with the list.
+  - Prints the result, which is the mean of the numbers in the list.
+
+### Benefits of Good Documentation:
+
+1. **Clarity:** Helps other users (or yourself in the future) understand what the function is supposed to do.
+2. **Maintainability:** Makes it easier to maintain and update code by providing clear information about each function.
+3. **Usability:** Assists users in correctly using the function by documenting the expected parameters and return values.
+
+### Summary:
+
+Using docstrings to document your functions is a best practice in Python. It ensures that your code is easier to read, understand, and maintain. Always include a clear description of the function’s purpose, parameters, and return values to make your code more user-friendly and maintainable.

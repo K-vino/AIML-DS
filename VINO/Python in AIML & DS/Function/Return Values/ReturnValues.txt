@@ -1,0 +1,108 @@
+### 3. Return Values
+
+**Explanation:**
+In Python, functions can return values using the `return` statement. A function can return a single value, multiple values (often bundled in a tuple), or even complex data structures like lists or dictionaries. This allows for flexible and expressive function outputs.
+
+### Example Program: Calculating Mean and Standard Deviation
+
+```python
+def calculate_statistics(numbers):
+    """
+    Calculate the mean and standard deviation of a list of numbers.
+
+    :param numbers: List of numbers.
+    :return: Tuple containing the mean and standard deviation.
+    """
+    mean = sum(numbers) / len(numbers)
+    variance = sum((x - mean) ** 2 for x in numbers) / len(numbers)
+    std_dev = variance ** 0.5
+    return mean, std_dev
+```
+
+**Details:**
+
+- **Function Definition:**
+  ```python
+  def calculate_statistics(numbers):
+  ```
+  - Defines a function named `calculate_statistics` that takes a single parameter, `numbers`, which is expected to be a list of numerical values.
+
+- **Docstring:**
+  ```python
+  """
+  Calculate the mean and standard deviation of a list of numbers.
+
+  :param numbers: List of numbers.
+  :return: Tuple containing the mean and standard deviation.
+  """
+  ```
+  - Describes the function's purpose: to calculate both the mean and standard deviation of the provided list.
+  - Specifies that the function returns a tuple containing the mean and standard deviation.
+
+- **Function Logic:**
+  ```python
+  mean = sum(numbers) / len(numbers)
+  ```
+  - Calculates the mean (average) of the numbers by dividing the sum of the numbers by the count of the numbers.
+
+  ```python
+  variance = sum((x - mean) ** 2 for x in numbers) / len(numbers)
+  ```
+  - Computes the variance, which is the average of the squared differences from the mean. This measures the spread of the numbers.
+
+  ```python
+  std_dev = variance ** 0.5
+  ```
+  - Calculates the standard deviation by taking the square root of the variance. The standard deviation provides a measure of the amount of variation or dispersion in the dataset.
+
+  ```python
+  return mean, std_dev
+  ```
+  - Returns a tuple containing the calculated mean and standard deviation. In Python, returning multiple values like this creates a tuple automatically.
+
+### Usage Example:
+
+```python
+numbers = [10, 20, 30, 40, 50]
+mean, std_dev = calculate_statistics(numbers)
+print("Mean:", mean)
+print("Standard Deviation:", std_dev)
+```
+
+**Explanation of Usage:**
+
+- **List of Numbers:**
+  ```python
+  numbers = [10, 20, 30, 40, 50]
+  ```
+  - Defines a list of numerical values for which statistics will be calculated.
+
+- **Function Call:**
+  ```python
+  mean, std_dev = calculate_statistics(numbers)
+  ```
+  - Calls the `calculate_statistics` function with the list `numbers`.
+  - The function returns a tuple containing the mean and standard deviation, which are unpacked into the variables `mean` and `std_dev`.
+
+- **Print Statements:**
+  ```python
+  print("Mean:", mean)
+  print("Standard Deviation:", std_dev)
+  ```
+  - Prints the calculated mean and standard deviation to the console.
+
+### Key Concepts Demonstrated:
+
+1. **Returning Multiple Values:**
+   - The function returns multiple values by packing them into a tuple. This allows you to return more than one result from a function.
+
+2. **Tuple Unpacking:**
+   - When calling the function, the returned tuple is unpacked into separate variables (`mean` and `std_dev`), making it easier to work with each value individually.
+
+3. **Mean Calculation:**
+   - Shows how to compute the mean, a fundamental statistical measure.
+
+4. **Standard Deviation Calculation:**
+   - Demonstrates how to calculate the standard deviation, which provides insight into the variability of the dataset.
+
+This example illustrates how functions can return multiple values, and how you can use these values in your program to perform further calculations or display results.

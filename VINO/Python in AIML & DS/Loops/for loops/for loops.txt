@@ -1,0 +1,98 @@
+### For Loops in Python
+
+#### Syntax and Structure
+
+A `for` loop in Python is used to iterate over a sequence (such as a list, tuple, dictionary, string, or range) or any other iterable object. It allows you to execute a block of code multiple times, once for each item in the sequence.
+
+**Basic Syntax:**
+
+```python
+for item in iterable:
+    # Code to execute
+```
+
+- **`item`**: Represents the current value from the iterable during each iteration.
+- **`iterable`**: Any object that supports iteration (e.g., list, tuple, string, range).
+
+**Examples of Iterables:**
+- **List**: `[1, 2, 3, 4]`
+- **Tuple**: `(1, 2, 3, 4)`
+- **String**: `"hello"`
+- **Range**: `range(5)` which produces numbers from 0 to 4
+
+#### Example: Calculate Squares of Numbers
+
+```python
+# List of numbers
+numbers = [1, 2, 3, 4, 5]
+
+# Initialize an empty list to store squares
+squares = []
+
+# Iterate over the list to calculate squares
+for number in numbers:
+    square = number ** 2
+    squares.append(square)
+
+print("Squares:", squares)
+```
+
+**Explanation:**
+- **`numbers`**: The list of numbers we want to process.
+- **`for number in numbers`**: Iterates through each element in the `numbers` list.
+- **`number ** 2`**: Calculates the square of the current number.
+- **`squares.append(square)`**: Adds the result to the `squares` list.
+- **Output**: `[1, 4, 9, 16, 25]` which are the squares of the numbers in the list.
+
+#### Application: Data Cleansing in a pandas DataFrame
+
+**Scenario**: Suppose we have a DataFrame with some missing values, and we want to replace those missing values with a default value.
+
+```python
+import pandas as pd
+import numpy as np
+
+# Create a DataFrame with missing values
+data = {'Name': ['Alice', 'Bob', 'Charlie', 'David'],
+        'Age': [25, np.nan, 30, np.nan],
+        'City': ['New York', 'Los Angeles', 'Chicago', 'Houston']}
+df = pd.DataFrame(data)
+
+print("Original DataFrame:\n", df)
+
+# Use a for loop to iterate over rows and fill missing values
+for index, row in df.iterrows():
+    if pd.isna(row['Age']):
+        df.at[index, 'Age'] = 0  # Replace missing age with 0
+
+print("\nDataFrame after data cleansing:\n", df)
+```
+
+**Explanation:**
+- **`df.iterrows()`**: Iterates over DataFrame rows as (index, Series) pairs.
+- **`pd.isna(row['Age'])`**: Checks if the 'Age' column in the current row has a missing value.
+- **`df.at[index, 'Age'] = 0`**: Replaces missing values in the 'Age' column with 0.
+- **Output**:
+  ```
+  Original DataFrame:
+        Name   Age         City
+  0   Alice  25.0     New York
+  1     Bob   NaN  Los Angeles
+  2 Charlie  30.0      Chicago
+  3   David   NaN      Houston
+
+  DataFrame after data cleansing:
+        Name  Age         City
+  0   Alice  25.0     New York
+  1     Bob   0.0  Los Angeles
+  2 Charlie  30.0      Chicago
+  3   David   0.0      Houston
+  ```
+
+### Summary
+
+- **Syntax and Structure**: `for item in iterable` iterates through each element of the `iterable`.
+- **Example**: Calculating squares demonstrates basic usage of a `for` loop with lists.
+- **Application**: Data cleansing using `for` loops allows for handling and processing DataFrame rows to replace or modify data as required.
+
+By understanding and using `for` loops effectively, you can automate repetitive tasks and perform operations on data structures in Python efficiently.

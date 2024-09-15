@@ -1,0 +1,77 @@
+### 4. Lambda Functions
+
+**Explanation:**
+Lambda functions in Python are small, anonymous functions defined using the `lambda` keyword. They are used for simple operations where defining a full function would be unnecessary. Lambda functions are often used with functions like `map()`, `filter()`, and `sorted()`.
+
+### Example Program: Sorting a List of Tuples
+
+```python
+data = [(1, 'a'), (3, 'c'), (2, 'b')]
+sorted_data = sorted(data, key=lambda x: x[1])
+
+print("Sorted data based on second element:", sorted_data)
+```
+
+**Details:**
+
+1. **Lambda Function Definition:**
+
+   ```python
+   lambda x: x[1]
+   ```
+
+   - **Syntax:** `lambda arguments: expression`
+   - **Purpose:** Defines an anonymous function (lambda) that takes one argument `x` and returns the second element of `x` (i.e., `x[1]`).
+   - **Usage:** This lambda function is used as the key for sorting, specifying that the sorting should be based on the second element of each tuple.
+
+2. **Using `sorted()` with Lambda:**
+
+   ```python
+   sorted(data, key=lambda x: x[1])
+   ```
+
+   - **Function:** `sorted()` is a built-in Python function that returns a new sorted list from the elements of any iterable (like a list or tuple).
+   - **Argument:** `key=lambda x: x[1]` specifies a lambda function to extract the value to be used for sorting. In this case, it extracts the second element of each tuple.
+   - **Result:** The list `data` is sorted based on the values provided by the lambda function (i.e., the second element of each tuple).
+
+3. **Output:**
+
+   ```python
+   print("Sorted data based on second element:", sorted_data)
+   ```
+
+   - **Print Statement:** Displays the sorted list of tuples based on the second element.
+
+### Breakdown of the Program:
+
+1. **Define Data:**
+
+   ```python
+   data = [(1, 'a'), (3, 'c'), (2, 'b')]
+   ```
+
+   - A list of tuples is created. Each tuple contains an integer and a string.
+
+2. **Sort Data:**
+
+   ```python
+   sorted_data = sorted(data, key=lambda x: x[1])
+   ```
+
+   - The `sorted()` function sorts the list `data` using the lambda function to determine the sorting key. The lambda function extracts the second element of each tuple (`x[1]`), so the list is sorted by these string values.
+
+3. **Print Results:**
+
+   ```python
+   print("Sorted data based on second element:", sorted_data)
+   ```
+
+   - Prints the sorted list, showing that the tuples are ordered by the second element (the string values) in ascending order.
+
+### Summary
+
+- **Lambda Functions:** Provide a concise way to create small, one-off functions without the need for a full function definition.
+- **Use Cases:** Commonly used as arguments to higher-order functions like `sorted()`, `map()`, and `filter()`.
+- **Advantages:** They are useful for simple operations that don’t require the overhead of named functions.
+
+In this example, lambda functions are utilized effectively to sort a list of tuples by a specific criterion, demonstrating their practical use in data manipulation and sorting operations.

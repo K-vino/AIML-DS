@@ -1,0 +1,94 @@
+Here's a detailed explanation of parameter passing in Python, focusing on default values and keyword arguments, with an example that incorporates handling NaN (Not a Number) values.
+
+### 2. Parameter Passing
+
+**Explanation:**
+In Python, functions can accept parameters with default values. Default values allow the caller to omit those arguments, using the default if not provided. You can also use keyword arguments to pass parameters explicitly by name.
+
+### Example Program: Mean Calculation with NaN Handling
+
+```python
+import numpy as np
+
+def calculate_mean_ignore_nan(numbers, ignore_nan=False):
+    """
+    Calculate the mean of a list of numbers with an option to ignore NaN values.
+
+    :param numbers: List of numbers.
+    :param ignore_nan: Boolean flag to indicate whether to ignore NaN values.
+    :return: Mean of the numbers.
+    """
+    if ignore_nan:
+        numbers = [x for x in numbers if not np.isnan(x)]
+    return sum(numbers) / len(numbers)
+```
+
+**Details:**
+
+- **Function Definition:**
+  - `def calculate_mean_ignore_nan(numbers, ignore_nan=False):`
+    - Defines a function named `calculate_mean_ignore_nan` that takes two parameters:
+      - `numbers`: A list of numbers for which the mean will be calculated.
+      - `ignore_nan`: A boolean flag with a default value of `False`. This parameter determines whether to exclude NaN values from the calculation.
+
+- **Docstring:**
+  - Describes the function's purpose and parameters.
+  - `:param numbers:` Indicates that `numbers` is a list of numerical values.
+  - `:param ignore_nan:` Describes the boolean flag to indicate if NaN values should be ignored.
+  - `:return:` Specifies that the function returns the mean of the numbers.
+
+- **Function Logic:**
+  - **`if ignore_nan:`**
+    - Checks if the `ignore_nan` flag is `True`.
+    - If `True`, filters out NaN values from the `numbers` list using a list comprehension:
+      ```python
+      numbers = [x for x in numbers if not np.isnan(x)]
+      ```
+    - `np.isnan(x)` is used to check if `x` is NaN.
+  - **`return sum(numbers) / len(numbers)`**
+    - Computes the mean by summing the numbers and dividing by the count of items in the list.
+
+### Usage Example:
+
+```python
+import numpy as np
+
+numbers = [10, np.nan, 30, 40, 50]
+print("Mean ignoring NaN:", calculate_mean_ignore_nan(numbers, ignore_nan=True))
+```
+
+**Explanation of Usage:**
+
+- **List of Numbers:** `[10, np.nan, 30, 40, 50]`
+  - Contains regular numbers and a NaN value.
+
+- **Function Call:**
+  - `calculate_mean_ignore_nan(numbers, ignore_nan=True)`
+    - Passes the `numbers` list and sets `ignore_nan` to `True`.
+    - The function will filter out NaN values before computing the mean.
+
+- **Output:**
+  - The function prints the mean of `[10, 30, 40, 50]`, which is calculated as:
+    ```python
+    (10 + 30 + 40 + 50) / 4 = 130 / 4 = 32.5
+    ```
+  - Thus, the output will be: `Mean ignoring NaN: 32.5`
+
+### Key Concepts Demonstrated:
+
+1. **Default Parameter Values:**
+   - `ignore_nan=False` allows the function to be called without specifying this argument, using `False` as the default.
+
+2. **Keyword Arguments:**
+   - `ignore_nan=True` demonstrates how to explicitly pass parameters by name.
+
+3. **Handling Special Values:**
+   - Shows how to deal with NaN values in numerical computations using NumPy.
+
+4. **List Comprehensions:**
+   - Utilizes list comprehensions to filter out NaN values efficiently.
+
+5. **Function Documentation:**
+   - Proper use of docstrings to document the purpose and parameters of the function.
+
+This example illustrates how to create flexible functions with default and keyword arguments and how to handle special cases like NaN values in data processing.

@@ -1,0 +1,8 @@
+The mini-program demonstrates various aspects of Python functions, including:
+
+Defining functions and using them to calculate statistics.
+Parameter passing with default values and keyword arguments.
+Returning multiple values from functions.
+Lambda functions for concise anonymous functions.
+Applying functions to data manipulation tasks, such as normalizing DataFrame columns.
+Documenting functions with docstrings to improve code readability and maintainability.

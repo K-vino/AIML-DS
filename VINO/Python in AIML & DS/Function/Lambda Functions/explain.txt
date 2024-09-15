@@ -1,0 +1,49 @@
+Here is a Python program that demonstrates the use of lambda functions to sort a list of tuples based on the second element of each tuple:
+
+```python
+# Define a list of tuples where each tuple contains an integer and a string
+data = [(1, 'a'), (3, 'c'), (2, 'b')]
+
+# Sort the list based on the second element of each tuple using a lambda function
+sorted_data = sorted(data, key=lambda x: x[1])
+
+# Print the sorted list
+print("Sorted data based on second element:", sorted_data)
+```
+
+### Explanation:
+
+1. **Define the Data:**
+
+   ```python
+   data = [(1, 'a'), (3, 'c'), (2, 'b')]
+   ```
+
+   - This line creates a list called `data` containing tuples. Each tuple has an integer and a string.
+
+2. **Sort the Data Using Lambda Function:**
+
+   ```python
+   sorted_data = sorted(data, key=lambda x: x[1])
+   ```
+
+   - `sorted(data, key=lambda x: x[1])`:
+     - `sorted(data, ...)` sorts the list `data`.
+     - `key=lambda x: x[1]` specifies a lambda function that extracts the second element (`x[1]`) of each tuple to be used as the sorting key.
+     - This lambda function determines that the sorting should be based on the second element of each tuple.
+
+3. **Print the Sorted Data:**
+
+   ```python
+   print("Sorted data based on second element:", sorted_data)
+   ```
+
+   - This line prints the sorted list of tuples. The tuples will be arranged in ascending order based on the string values (second element) of each tuple.
+
+### Expected Output:
+
+```
+Sorted data based on second element: [(1, 'a'), (2, 'b'), (3, 'c')]
+```
+
+- The output shows that the list `data` has been sorted such that the tuples are ordered according to the alphabetical order of the second element in each tuple.

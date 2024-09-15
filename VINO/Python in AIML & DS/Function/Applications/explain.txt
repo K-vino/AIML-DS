@@ -1,0 +1,155 @@
+Certainly! Let's break down the code step by step to understand how it works.
+
+### Python Program: Normalizing a Column in a Pandas DataFrame
+
+```python
+import pandas as pd
+
+def normalize_column(df, column_name):
+    """
+    Normalize a column in a pandas DataFrame using min-max scaling.
+
+    :param df: Pandas DataFrame.
+    :param column_name: Name of the column to normalize.
+    :return: Pandas DataFrame with normalized column.
+    """
+    # Check if the column exists in the DataFrame
+    if column_name not in df.columns:
+        raise ValueError(f"Column '{column_name}' does not exist in the DataFrame.")
+
+    # Get the minimum and maximum values of the specified column
+    min_val = df[column_name].min()
+    max_val = df[column_name].max()
+
+    # Apply min-max scaling to normalize the column
+    df[column_name] = (df[column_name] - min_val) / (max_val - min_val)
+
+    return df
+
+# Example usage
+if __name__ == "__main__":
+    # Create a DataFrame with sample data
+    df = pd.DataFrame({
+        "Values": [10, 20, 30, 40, 50]
+    })
+
+    # Print the DataFrame before normalization
+    print("Original DataFrame:")
+    print(df)
+
+    # Normalize the 'Values' column
+    df = normalize_column(df, "Values")
+
+    # Print the DataFrame after normalization
+    print("\nDataFrame after normalization:")
+    print(df)
+```
+
+### Detailed Explanation:
+
+1. **Import Pandas Library:**
+   ```python
+   import pandas as pd
+   ```
+   - This imports the `pandas` library, which is used for data manipulation and analysis. The library provides DataFrame and Series objects, which are essential for handling structured data.
+
+2. **Define the `normalize_column` Function:**
+   ```python
+   def normalize_column(df, column_name):
+       """
+       Normalize a column in a pandas DataFrame using min-max scaling.
+
+       :param df: Pandas DataFrame.
+       :param column_name: Name of the column to normalize.
+       :return: Pandas DataFrame with normalized column.
+       """
+   ```
+   - **Function Purpose:** This function normalizes a specified column in a DataFrame using min-max scaling, which rescales the values to a range between 0 and 1.
+   - **Parameters:**
+     - `df`: The DataFrame containing the data to be normalized.
+     - `column_name`: The name of the column to normalize.
+
+3. **Check if the Column Exists:**
+   ```python
+   if column_name not in df.columns:
+       raise ValueError(f"Column '{column_name}' does not exist in the DataFrame.")
+   ```
+   - **Purpose:** Ensures that the column specified by `column_name` exists in the DataFrame `df`.
+   - **Process:** If the column does not exist, it raises a `ValueError` with a descriptive message.
+
+4. **Compute Minimum and Maximum Values:**
+   ```python
+   min_val = df[column_name].min()
+   max_val = df[column_name].max()
+   ```
+   - **Purpose:** These lines calculate the minimum (`min_val`) and maximum (`max_val`) values of the specified column.
+   - **Method:**
+     - `df[column_name].min()`: Finds the minimum value in the column.
+     - `df[column_name].max()`: Finds the maximum value in the column.
+
+5. **Apply Min-Max Scaling:**
+   ```python
+   df[column_name] = (df[column_name] - min_val) / (max_val - min_val)
+   ```
+   - **Purpose:** Normalizes the column values to a range between 0 and 1 using min-max scaling.
+   - **Formula:**
+     - `df[column_name] - min_val`: Shifts the values to start from 0.
+     - `max_val - min_val`: Computes the range of the column values.
+     - Dividing by `(max_val - min_val)` scales the values to the range [0, 1].
+
+6. **Return the Modified DataFrame:**
+   ```python
+   return df
+   ```
+   - **Purpose:** Returns the DataFrame with the normalized column.
+
+7. **Example Usage:**
+   ```python
+   if __name__ == "__main__":
+       # Create a DataFrame with sample data
+       df = pd.DataFrame({
+           "Values": [10, 20, 30, 40, 50]
+       })
+
+       # Print the DataFrame before normalization
+       print("Original DataFrame:")
+       print(df)
+
+       # Normalize the 'Values' column
+       df = normalize_column(df, "Values")
+
+       # Print the DataFrame after normalization
+       print("\nDataFrame after normalization:")
+       print(df)
+   ```
+   - **Purpose:** Demonstrates how to use the `normalize_column` function.
+   - **Steps:**
+     - Creates a DataFrame `df` with one column "Values" containing sample data.
+     - Prints the DataFrame before normalization.
+     - Calls `normalize_column` to normalize the "Values" column.
+     - Prints the DataFrame after normalization to show the transformed data.
+
+### Expected Output:
+
+```
+Original DataFrame:
+   Values
+0      10
+1      20
+2      30
+3      40
+4      50
+
+DataFrame after normalization:
+   Values
+0     0.0
+1     0.25
+2     0.5
+3     0.75
+4     1.0
+```
+
+- **Original DataFrame:** Shows the initial values in the "Values" column.
+- **Normalized DataFrame:** Displays the values scaled between 0 and 1, making it easier to compare and analyze.
+
+This program effectively demonstrates how to use functions to preprocess data in a DataFrame, making it suitable for further analysis or modeling tasks.
